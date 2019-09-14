@@ -1,0 +1,5 @@
+*.swp
+*.swo
+dashboards/
+**/__pycache__/
+*.old
