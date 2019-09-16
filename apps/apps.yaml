@@ -1,8 +1,4 @@
 ---
-hello_world:
-  module: hello
-  class: HelloWorld
-
 toilet_motion_lights:
   module: motion_lights
   class: BrightnessControlledMotionLight
