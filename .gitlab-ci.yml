@@ -80,4 +80,4 @@ black:
     - black --version
     - mv fake_secrets.yaml secrets.yaml
   script:
-    - black --check --fast apps/
+    - black --exclude=apps/occusim --check --fast apps/
