@@ -7,14 +7,14 @@
 # too-many-arguments - Lots of AppDaemon callbacks have lots of arguments
 # unnecessary-pass - This can hurt readability
 # unused-argument - Not all callback arguments are used
-#disable=
-#  attribute-defined-outside-init,
-#  bad-continuation,
-#  import-error,
-#  no-name-in-module,
-#  too-many-arguments,
-#  unnecessary-pass,
-#  unused-argument
+disable=
+  attribute-defined-outside-init,
+  bad-continuation,
+  import-error,
+  no-name-in-module,
+  too-many-arguments,
+  unnecessary-pass,
+  unused-argument
 
 [REPORTS]
 reports=no
