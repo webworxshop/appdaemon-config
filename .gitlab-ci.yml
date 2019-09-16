@@ -13,6 +13,7 @@ variables:
   tags:
     - hass
 
+# Preflight jobs
 yamllint:
   <<: *preflight
   image: sdesbure/yamllint
@@ -81,3 +82,18 @@ black:
     - mv fake_secrets.yaml secrets.yaml
   script:
     - black --exclude=apps/occusim --check --fast apps/
+
+# Unit test jobs
+unit-tests:
+  stage: test
+  image:
+    name: acockburn/appdaemon:latest
+    entrypoint: [""]
+  before_script:
+    - pip install -r apps/test/test_requirements.txt
+    - py.test --version
+    - mv fake_secrets.yaml secrets.yaml
+  script:
+    - py.test
+  tags:
+    - hass
