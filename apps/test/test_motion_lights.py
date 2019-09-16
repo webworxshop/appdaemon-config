@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 from appdaemontestframework import automation_fixture
 from apps.motion_lights import MotionLight
 

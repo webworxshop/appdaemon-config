@@ -68,7 +68,7 @@ flake8:
     - flake8 --version
     - mv fake_secrets.yaml secrets.yaml
   script:
-    - flake8 apps/
+    - flake8 --exclude=apps/occusim --max-line-length=88 apps/
 
 black:
   <<: *preflight
