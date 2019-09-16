@@ -33,3 +33,51 @@ markdownlint:
     - mdl --version
   script:
     - mdl --style all --warnings --git-recurse .
+
+pylint:
+  <<: *preflight
+  image:
+    name: python:3
+    entrypoint: [""]
+  before_script:
+    - pip install pylint
+    - pylint --version
+    - mv fake_secrets.yaml secrets.yaml
+  script:
+    - pylint --rcfile pylintrc apps/
+
+mypy:
+  <<: *preflight
+  image:
+    name: python:3
+    entrypoint: [""]
+  before_script:
+    - pip install mypy
+    - mypy --version
+    - mv fake_secrets.yaml secrets.yaml
+  script:
+    - mypy --ignore-missing-imports apps/
+
+flake8:
+  <<: *preflight
+  image:
+    name: python:3
+    entrypoint: [""]
+  before_script:
+    - pip install flake8
+    - flake8 --version
+    - mv fake_secrets.yaml secrets.yaml
+  script:
+    - flake8 apps/
+
+black:
+  <<: *preflight
+  image:
+    name: python:3
+    entrypoint: [""]
+  before_script:
+    - pip install black
+    - black --version
+    - mv fake_secrets.yaml secrets.yaml
+  script:
+    - black --check --fast apps/
