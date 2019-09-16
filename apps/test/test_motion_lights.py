@@ -1,7 +1,6 @@
 # import pytest
 from appdaemontestframework import automation_fixture
 from apps.motion_lights import MotionLight
-from datetime import time
 
 
 @automation_fixture(MotionLight)
