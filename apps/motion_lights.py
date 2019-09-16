@@ -1,8 +1,6 @@
-import appdaemon.plugins.hass.hassapi as hass
+"""Motion Light Apps"""
 
-"""
-Motion Light Apps
-"""
+import appdaemon.plugins.hass.hassapi as hass
 
 class MotionLight(hass.Hass):
     """Basic motion light"""
