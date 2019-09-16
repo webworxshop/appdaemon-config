@@ -111,7 +111,10 @@ deploy:
     - echo "$DEPLOYMENT_SSH_KEY" > id_rsa
     - chmod 600 id_rsa
   script:
-    - ssh -i id_rsa -o "StrictHostKeyChecking=no" $DEPLOYMENT_SSH_LOGIN "cd /mnt/docker-data/appdaemon && git fetch && git checkout $CI_COMMIT_SHA && git submodule sync --recursive && git submodule update --init --recursive"
+    - |
+      ssh -i id_rsa -o "StrictHostKeyChecking=no" $DEPLOYMENT_SSH_LOGIN \
+          "cd /mnt/docker-data/appdaemon && git fetch && git checkout $CI_COMMIT_SHA \
+           && git submodule sync --recursive && git submodule update --init --recursive"
   after_script:
     - rm id_rsa
   only:
