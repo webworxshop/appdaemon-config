@@ -10,3 +10,42 @@ toilet_motion_lights:
     - !secret bed2_door_entity
   other_doors:
     - binary_sensor.kitchen_hall_door_contact
+
+occupancy_simulator:
+  class: OccuSim
+  module: occusim
+  log: '1'
+  notify: '1'
+  enable: input_boolean.vacation_mode,on
+  test: '0'
+  dump_times: '1'
+  reset_time: '02:00:00'
+
+  # evening routine
+  step_evening_name: Evening
+  step_evening_start: !secret evening_start_time
+  step_evening_on_1: script.downlights_bright
+
+  step_movie1_name: Movie Scene
+  step_movie1_start: !secret movie1_start_time
+  step_movie1_end: !secret movie1_end_time
+  step_movie1_on_1: scene.movie
+
+  step_movie2_name: Movie Scene Pause
+  step_movie2_relative: Movie Scene
+  step_movie2_start_offset: !secret movie2_start_offset
+  step_movie2_end_offset: !secret movie2_end_offset
+  step_movie2_on_1: script.downlights_bright
+
+  step_movie3_name: Movie Scene Play
+  step_movie3_relative: Movie Scene Pause
+  step_movie3_start_offset: !secret movie3_start_offset
+  step_movie3_end_offset: !secret movie3_end_offset
+  step_movie3_on_1: scene.movie
+
+  step_bedtime_name: Bedtime
+  step_bedtime_start: !secret bedtime_start_time
+  step_bedtime_end: !secret bedtime_end_time
+  step_bedtime_off_1: light.kitchen_downlights
+  step_bedtime_off_2: light.living_room_spots
+  step_bedtime_off_3: light.dining_room_spots
